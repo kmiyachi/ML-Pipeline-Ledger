@@ -90,7 +90,7 @@ def update_and_insert_documents(transaction_executor):
 
 
 
-def execute_insert(dataPath, outHash):
+def execute_insert(ledgerName, table, dataPath, outHash):
     repo = git.Repo(search_parent_directories=True)
     commit_hash = repo.head.object.hexsha
     collection_data = [
@@ -102,10 +102,10 @@ def execute_insert(dataPath, outHash):
         }
     ]
     try:
-        with create_qldb_session() as session:
+        with create_qldb_session(ledgerName) as session:
             # An INSERT statement creates the initial revision of a document with a version number of zero.
             # QLDB also assigns a unique document identifier in GUID format as part of the metadata.
-            session.execute_lambda(lambda executor: insert_documents(executor, 'Collection', collection_data),
+            session.execute_lambda(lambda executor: insert_documents(executor, table, collection_data),
                                    lambda retry_attempt: logger.info('Retrying due to OCC conflict...'))
             logger.info('Documents inserted successfully!')
     except Exception:
