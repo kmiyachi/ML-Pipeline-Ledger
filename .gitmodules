@@ -1,0 +1,3 @@
+[submodule "MachineLearningStocks"]
+	path = MachineLearningStocks
+	url = https://github.com/robertmartin8/MachineLearningStocks.git
