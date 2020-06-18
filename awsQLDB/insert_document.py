@@ -112,6 +112,18 @@ def execute_insert(ledgerName, table, dataPath, outHash):
         logger.exception('Error inserting or updating documents.')
 
 
+def dynamic_insert(ledgerName, table, data):
+    try:
+        with create_qldb_session(ledgerName) as session:
+            # An INSERT statement creates the initial revision of a document with a version number of zero.
+            # QLDB also assigns a unique document identifier in GUID format as part of the metadata.
+            session.execute_lambda(lambda executor: insert_documents(executor, table, data),
+                                   lambda retry_attempt: logger.info('Retrying due to OCC conflict...'))
+            logger.info('Documents inserted successfully!')
+    except Exception:
+        logger.exception('Error inserting or updating documents.')
+
+
 if __name__ == '__main__':
     """
     Insert documents into a table in a QLDB ledger.
