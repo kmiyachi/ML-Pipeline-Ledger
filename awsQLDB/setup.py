@@ -47,7 +47,8 @@ def qldb_setup(ledgerName, collectionIndex=None, trainIndex=None, predictIndex=N
     index_setup(ledgerName, collectionIndex, trainIndex, predictIndex)
 
 
-cIndex = ['GitHash', 'ScrapeTime', 'DataPath', 'OutputHash']
-tIndex = ['GitHash', 'InputHash', 'TrainTime', 'Model']
-pIndex = ['GitHash', 'InputHash', 'Model', 'PredictionTime', 'OutputHash']
-qldb_setup("Demo4Ledger", cIndex, tIndex, pIndex)
+if __name__ == "__main__": 
+    cIndex = ['GitHash', 'ScrapeTime', 'DataPath', 'OutputHash']
+    tIndex = ['GitHash', 'InputHash', 'TrainTime', 'Model']
+    pIndex = ['GitHash', 'InputHash', 'Model', 'PredictionTime', 'OutputHash']
+    qldb_setup("Demo4Ledger", cIndex, tIndex, pIndex)
