@@ -32,7 +32,7 @@ def index_setup(ledgerName, collectionIndex=None, trainIndex=None, predictIndex=
         logger.exception('Unable to create indexes.')
 
 
-def qldb_setup(ledgerName, collectionIndex=None, trainIndex=None, predictIndex=None):
+def qldb_setup(ledgerName, tableList=['Collection', 'Training', 'Testing']):
     create_ledger(ledgerName)
     wait_for_active(ledgerName)
     try:
@@ -48,7 +48,7 @@ def qldb_setup(ledgerName, collectionIndex=None, trainIndex=None, predictIndex=N
 
 
 if __name__ == "__main__": 
-    cIndex = ['GitHash', 'ScrapeTime', 'DataPath', 'OutputHash']
+    cIndex = ['GitHash', 'ScrapeTime', 'InputData', 'OutputHash']
     tIndex = ['GitHash', 'InputHash', 'TrainTime', 'Model']
     pIndex = ['GitHash', 'InputHash', 'Model', 'PredictionTime', 'OutputHash']
-    qldb_setup("Demo4Ledger", cIndex, tIndex, pIndex)
+    qldb_setup("StockMarketPipeline", cIndex, tIndex, pIndex)
