@@ -41,6 +41,9 @@ def get_digest_result(name):
     logger.info("Let's get the current digest of the ledger named {}".format(name))
     result = qldb_client.get_digest(Name=name)
     logger.info('Success. LedgerDigest: {}.'.format(digest_response_to_string(result)))
+    file1 = open("digest.txt", "w")
+    file1.write(digest_response_to_string(result))
+    file1.close() 
     return result
 
 

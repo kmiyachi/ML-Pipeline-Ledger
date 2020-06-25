@@ -24,7 +24,7 @@ from pyqldb.driver.pooled_qldb_driver import PooledQldbDriver
 from constants import Constants
 
 logger = getLogger(__name__)
-basicConfig(level=INFO)
+#basicConfig(level=INFO)
 
 
 def create_qldb_driver(ledger_name="Insight", region_name=None, endpoint_url=None, boto3_session=None):

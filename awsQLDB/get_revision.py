@@ -102,6 +102,11 @@ def verify_registration(qldb_session, ledger_name, vin):
     logger.info('Got a ledger digest: digest tip address = {}, digest = {}.'.format(
         value_holder_to_string(digest_tip_address.get('IonText')), to_base_64(digest_bytes)))
 
+    file1 = open('digest.txt', 'a')
+    file1.write("\n" + value_holder_to_string(digest_tip_address.get('IonText')))
+    file1.write("\n" + "digest: " + to_base_64(digest_bytes))
+    file1.close()
+
     logger.info('Querying the registration with VIN = {} to verify each version of the registration...'.format(vin))
     cursor = lookup_registration_for_vin(qldb_session, vin)
     logger.info('Getting a proof for the document.')
@@ -142,7 +147,7 @@ if __name__ == '__main__':
     registration = SampleData.VEHICLE_REGISTRATION[0]
     vin = registration['VIN']
     try:
-        with create_qldb_session() as session:
+        with create_qldb_session(Constants.LEDGER_NAME) as session:
             verify_registration(session, Constants.LEDGER_NAME, vin)
     except Exception:
         logger.exception('Unable to verify revision.')

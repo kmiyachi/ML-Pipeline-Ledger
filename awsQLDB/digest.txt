@@ -1,0 +1,4 @@
+{Digest: b'\xdb\xe7\xbe\xaeQ\r@+\x18\xd5\x90\xcf\x1a\xcdQ\x97\x8d\x1f\xdf\xb0\x06mh\x06r\xa8\x12I\xdf\xcb`9', DigestTipAddress: { IonText: {
+  strandId: "JkHlQDKFTvi8YAVjYbc4aY",
+  sequenceNo: 46
+}}}
