@@ -1,4 +1,9 @@
-{Digest: b'\xdb\xe7\xbe\xaeQ\r@+\x18\xd5\x90\xcf\x1a\xcdQ\x97\x8d\x1f\xdf\xb0\x06mh\x06r\xa8\x12I\xdf\xcb`9', DigestTipAddress: { IonText: {
+{Digest: b'ZG\xd0<I\x07\xdc@j\xaf\x87n\xbd\x98\xfcU\xb0\xe5kf\xd3iB\x06S\xf9\x93\xe9\x88&>U', DigestTipAddress: { IonText: {
   strandId: "JkHlQDKFTvi8YAVjYbc4aY",
-  sequenceNo: 46
+  sequenceNo: 55
 }}}
+{ IonText: {
+  strandId: "JkHlQDKFTvi8YAVjYbc4aY",
+  sequenceNo: 55
+}}
+digest: WkfQPEkH3EBqr4duvZj8VbDla2bTaUIGU/mT6YgmPlU=

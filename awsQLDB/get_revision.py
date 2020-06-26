@@ -73,7 +73,7 @@ def lookup_registration_for_vin(qldb_session, vin):
     :return: Cursor on the result set of the statement query.
     """
     logger.info("Querying the 'VehicleRegistration' table for VIN: {}...".format(vin))
-    query = 'SELECT * FROM _ql_committed_VehicleRegistration WHERE data.VIN = ?'
+    query = 'SELECT * FROM _ql_committed_VehicleRegistration' # WHERE data.VIN = ?'
     parameters = [convert_object_to_ion(vin)]
     cursor = qldb_session.execute_statement(query, parameters)
     return cursor

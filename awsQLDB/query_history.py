@@ -71,7 +71,7 @@ if __name__ == '__main__':
     Query a table's history for a particular set of documents.
     """
     try:
-        with create_qldb_session() as session:
+        with create_qldb_session(Constants.LEDGER_NAME) as session:
             vin = SampleData.VEHICLE_REGISTRATION[0]['VIN']
             session.execute_lambda(lambda lambda_executor: previous_primary_owners(lambda_executor, vin),
                                    lambda retry_attempt: logger.info('Retrying due to OCC conflict...'))

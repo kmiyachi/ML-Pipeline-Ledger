@@ -147,7 +147,7 @@ if __name__ == '__main__':
     """
     vin = SampleData.VEHICLE_REGISTRATION[1]['VIN']
     try:
-        with create_qldb_session() as session:
+        with create_qldb_session(Constants.LEDGER_NAME) as session:
             cursor = session.execute_lambda(lambda executor: lookup_registration_for_vin(executor, vin),
                                             lambda retry_indicator: logger.info('Retrying due to OCC conflict...'))
             row = next(cursor)
